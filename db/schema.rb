@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120708020046) do
+ActiveRecord::Schema.define(:version => 20120724043036) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20120708020046) do
     t.integer  "depth"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.string   "type"
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true

@@ -18,8 +18,10 @@ Usg::Application.routes.draw do
     resources :users, :only => [:index, :show, :create, :destroy]
   end
   
-  match ':id', :as => :page, :via => :get, :controller => :pages, :action => :show
-  match ':id', :via => :put, :controller => :pages, :action => :update
+  resources :pages
+  %w[committee caucus generalassembly].each do |page|
+    resources :pages, :path => page, :as => "page_#{page.pluralize}"
+  end
 
   root :to => 'home#index'
 

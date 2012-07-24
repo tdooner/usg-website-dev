@@ -15,10 +15,9 @@ class PagesController < ApplicationController
   
   def find_page
     @page = Page.find(params[:id])
-    if request.path != page_path(@page)
+    if request.url != url_for(@page)
       flash[:notice] = render_to_string :partial => "flashes/page_url_change"
       return redirect_to @page, :status => :moved_permanently
     end
   end
-  
 end
